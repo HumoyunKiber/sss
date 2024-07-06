@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Bosh sahifa {% endblock title %}
+
+{% block content %}
+<style>
+	.blog-post {
+		margin-bottom: 20px;
+	}
+
+	.read-all-blogs-container {
+		text-align: center;
+		margin-top: 30px;
+	}
+
+	.read-all-blogs {
+		display: inline-block;
+		padding: 15px 25px;
+		background-color: #4CBF1C;
+		color: white;
+		text-decoration: none;
+		border-radius: 5px;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	.read-all-blogs:hover {
+		background-color: #fff;
+		color: #4CBF1C;
+	}
+</style>
+<!--================Start Home Banner Area =================-->
+<section class="home_banner_area">
+	<div class="banner_inner d-flex align-items-center">
+		<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+		</div>
+		<div class="container">
+			<div class="banner_content text-center">
+				<h3>Jizzax viloyati Paxtakor tumani maktabgacha <br />va maktab ta'limi web saytiga xush kelibsiz</h3>
+				<p>Web saytimiz orqali dunyoni istalgan joyidan maktablarimizda bo'ladigan yangiliklardan 
+					xabardor bo'lishingiz va IT oid kurslarimizni bepul o'rganishingiz mumkin. </p>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<!--================Courses Area =================-->
+<section class="courses_area p_120">
+	<div class="container">
+		<div class="main_title">
+			<h2>IT kurslar</h2>
+			<p>IT kurslariga qiziquvchi yoshlarimiz uchun boshlang'ich bepul kurslar.
+				Kurslarimiz orqali qiziquvchilar sonini oshirish va kelgusida professional kurslarni joylash ko'zda tutilgan</p>
+		</div>
+		<div class="row latest_blog_inner">
+			{% for i in courses %}
+			<div class="col-lg-3 col-md-6">
+				<div class="l_blog_item">
+					<img class="img-fluid" src="{{i.thumb.url}}" alt="{{i.title}}">
+					<a class="date" href="#">{{i.link}}</a>
+					<a href="{% url 'course_detail' i.id %}">
+						<h4>{{i.name}}</h4>
+					</a>
+					<p>{{ i.info|truncatechars:30 }}</p>
+				</div>
+			</div>
+			{%endfor%}
+
+			<div class="read-all-blogs-container">
+				<a href="{% url 'courses' %}" class="read-all-blogs">Batafsil</a>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!--================End Courses Area =================-->
+
+
+<!--================Latest Blog Area =================-->
+<section class="latest_blog_area p_120">
+	<div class="container">
+		<div class="main_title">
+			<h2>So'ngi yangiliklar</h2>
+			<p>Yangiliklar bo'limi orqali maktablardagi eng so'ngi yangiliklarni bilib olishingiz va
+				kelgusida o'tkazilishi kutiladigan tadbirlar haqida oldindan xabardor bo'lishingiz mumkin.</p>
+		</div>
+		<div class="row latest_blog_inner">
+			{% for i in posts %}
+			<div class="col-lg-3 col-md-6">
+				<div class="l_blog_item">
+					<img class="img-fluid" src="{{i.thumb.url}}" alt="{{i.title}}">
+					<a class="date" href="#">{{i.date}}</a>
+					<a href="{% url 'post_detail' i.id %}">
+						<h4>{{i.title}}</h4>
+					</a>
+					<p>{{ i.info|truncatechars:30 }}</p>
+				</div>
+			</div>
+			{%endfor%}
+
+			<div class="read-all-blogs-container">
+				<a href="{% url 'posts' %}" class="read-all-blogs">Batafsil</a>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!--================End Latest Blog Area =================-->
+
+<!--================Team Area =================-->
+<section class="team_area p_120">
+	<div class="container">
+		<div class="main_title">
+			<h2>Bizning mutaxassislarimiz</h2>
+			<p>Bu bo'lim orqali mutaxassislarimiz bilan yaqindan tanishishingiz, ularni yutuqlari va qaysi lavozimda ishlashini bilib olishingiz mumkin.</p>
+		</div>
+
+
+		<div class="row team_inner">
+			{%for i in members%}
+			<div class="col-lg-3 col-sm-6">
+				<div class="team_item">
+					<div class="team_img">
+						<img class="rounded-circle" src="{{i.image.url}}" alt="">
+					</div>
+					<div class="team_name">
+						<h4>{{i.name}}</h4>
+						<p>{{i.job}}</p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="read-all-blogs-container">
+				<a href="{% url 'members' %}" class="read-all-blogs">Batafsil</a>
+			</div>
+		</div>
+
+
+	</div>
+</section>
+<!--================End Team Area =================-->
+
+<!--================Map Area =================-->
+<section class="team_area">
+	<div class="map_main">
+		<div class="map-responsive">
+			<iframe
+				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France"
+				width="250" height="500" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+		</div>
+	</div>
+</section>
+<!--================End Map Area =================-->
+{% endblock content%}

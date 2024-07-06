@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Members {% endblock title %}
+
+{% block content %}
+<!--================Mmebers Area =================-->
+<section class="blog_area">
+    <div class="container">
+        <div class="row">
+            <div class="blog_left_sidebar">
+                <div class="row" style="padding: 10% 0 5% 0;">
+                    {%for i in members%}
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="team_item">
+                            <div class="team_img">
+                                <img class="rounded-circle" src="{{i.image.url}}" alt="">
+                            </div>
+                            <div class="team_name">
+                                <h4>{{i.name}}</h4>
+                                <p>{{i.job}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

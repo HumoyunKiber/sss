@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Kurslar {% endblock title %}
+
+{% block content %}
+<!--================course Area =================-->
+<section class="blog_area">
+    <div class="container">
+        <div class="row">
+            <div class="blog_left_sidebar">
+                <div class="row" style="padding: 10% 0 5% 0;">
+                    {% for i in courses %}
+                        <div class="col-4">
+                            <div class="blog_post">
+                                <img src="{{ i.thumb.url }}" alt="" class="img-fluid">
+                                <div class="blog_details">
+                                    <a href="{% url 'course_detail' i.id %}">
+                                        <h2>{{ i.name }}</h2>
+                                    </a>
+                                    <p>{{ i.info|truncatechars:30 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

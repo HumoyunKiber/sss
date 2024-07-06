@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Course {% endblock title %}
+
+{% block content %}
+<style>
+.o-video {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-top: 56.25%; /* 9 / 16 * 100 */
+}
+.o-video > iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+
+</style>
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area p_120">
+    <div class="container">
+        <div class="single-post row">
+            <div class="col-lg-12">
+				<div class="o-video">
+					<iframe src="https://www.youtube.com/embed/Kch8n4tcOZQ" allowfullscreen></iframe>
+				  </div>
+            </div>
+            <div class="col-lg-9 col-md-9 blog_details">
+                <h2>{{ course.name }}</h2>
+                <p class="excert">{{ course.info }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->
+
+{% endblock content %}

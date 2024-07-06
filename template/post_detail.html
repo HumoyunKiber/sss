@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Post {% endblock title %}
+
+{% block content %}
+
+
+<!--================POst detail Area =================-->
+<section class="blog_area single-post-area p_120">
+    <div class="container">
+        <div class="single-post row">
+            <div class="col-lg-12">
+                <div class="feature-img">
+                    <img class="img-fluid" src="{{ post.thumb.url }}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 blog_details">
+                <h2>{{ post.title }}</h2>
+                <p class="excert">{{ post.info }}</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for image in post_images %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="additional-img">
+                        <img class="img-fluid" src="{{ image.image.url }}" alt="">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->
+
+{% endblock content %}
